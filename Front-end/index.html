@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AI vs Human Text Detector</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+    <div class="glow-circle-1"></div>
+    <div class="glow-circle-2"></div>
+    <div class="glow-circle-3"></div>
+    
+    <nav class="glass-nav">
+        <div class="nav-container">
+            <a href="#home" class="nav-link active" data-section="home">
+                <div class="nav-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <span>Home</span>
+            </a>
+            <a href="#burhan" class="nav-link" data-section="burhan">
+                <div class="nav-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <span>Burhan</span>
+            </a>
+            <a href="#mohammad" class="nav-link" data-section="mohammad">
+                <div class="nav-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <span>Mohammad</span>
+            </a>
+            <a href="#shaigan" class="nav-link" data-section="shaigan">
+                <div class="nav-icon">
+                    <i class="fas fa-server"></i>
+                </div>
+                <span>Shaigan</span>
+            </a>
+            <div class="nav-indicator"></div>
+        </div>
+    </nav>
+
+    <div id="home" class="section active-section">
+        <div class="gradient-bg">
+            <div class="container">
+                <header class="animated-header">
+                    <h1 class="animate__animated animate__fadeInDown">AI <span class="vs">vs</span> Human</h1>
+                    <p class="subtitle animate__animated animate__fadeInUp animate__delay-1s">Text Origin Detector</p>
+                </header>
+                
+                <main>
+                    <div class="detector-box animate__animated animate__fadeInUp animate__delay-1s">
+                        <div class="input-section">
+                            <textarea id="text-input" placeholder="Paste or type text here to analyze..."></textarea>
+                            <button id="analyze-btn" class="gradient-btn pulse">
+                                <i class="fas fa-robot"></i> Analyze Text
+                            </button>
+                        </div>
+                        
+                        <div class="result-section">
+                            <div class="result-card human-card hidden">
+                                <div class="card-content">
+                                    <i class="fas fa-user"></i>
+                                    <h3>Human Written</h3>
+                                    <div class="confidence-meter">
+                                        <div class="meter human-meter"></div>
+                                        <span class="confidence-value">0%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="result-card ai-card hidden">
+                                <div class="card-content">
+                                    <i class="fas fa-robot"></i>
+                                    <h3>AI Generated</h3>
+                                    <div class="confidence-meter">
+                                        <div class="meter ai-meter"></div>
+                                        <span class="confidence-value">0%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="features">
+                        <div class="feature-card animate__animated animate__fadeInLeft">
+                            <div class="feature-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h4>Fast Analysis</h4>
+                            <p>Get results in seconds with our advanced detection algorithm</p>
+                        </div>
+                        <div class="feature-card animate__animated animate__fadeInUp">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h4>High Accuracy</h4>
+                            <p>Our model achieves over 95% accuracy in testing</p>
+                        </div>
+                        <div class="feature-card animate__animated animate__fadeInRight">
+                            <div class="feature-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <h4>Privacy Focused</h4>
+                            <p>Your text is never stored or shared with third parties</p>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        
+        <footer class="animate__animated animate__fadeInUp animate__delay-1s">
+            <p>© 2023 AI vs Human Detector | Built with ❤️ for the digital age</p>
+        </footer>
+    </div>
+
+    <div id="burhan" class="section team-section">
+        <div class="team-container">
+            <div class="team-card glass-card animate__animated animate__zoomIn">
+                <div class="team-header">
+                    <div class="team-avatar pulse" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h2>Burhan</h2>
+                    <p class="team-role">Frontend Developer</p>
+                    <div class="team-decoration">
+                        <div class="decoration-circle"></div>
+                        <div class="decoration-circle"></div>
+                        <div class="decoration-circle"></div>
+                    </div>
+                </div>
+                <div class="team-content">
+                    <h3>My Contributions</h3>
+                    <ul class="team-skills">
+                        <li><i class="fas fa-check-circle"></i> Designed and implemented the user interface</li>
+                        <li><i class="fas fa-check-circle"></i> Created all animations and interactive elements</li>
+                        <li><i class="fas fa-check-circle"></i> Developed the responsive layout</li>
+                        <li><i class="fas fa-check-circle"></i> Integrated with backend APIs</li>
+                        <li><i class="fas fa-check-circle"></i> Optimized for performance and accessibility</li>
+                    </ul>
+                    <div class="tech-used">
+                        <h4>Technologies Used:</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag"><i class="fab fa-html5"></i> HTML5</span>
+                            <span class="tech-tag"><i class="fab fa-css3-alt"></i> CSS3</span>
+                            <span class="tech-tag"><i class="fab fa-js"></i> JavaScript</span>
+                            <span class="tech-tag"><i class="fab fa-react"></i> React</span>
+                            <span class="tech-tag"><i class="fas fa-magic"></i> GSAP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mohammad" class="section team-section">
+        <div class="team-container">
+            <div class="team-card glass-card animate__animated animate__zoomIn">
+                <div class="team-header">
+                    <div class="team-avatar pulse" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h2>Mohammad</h2>
+                    <p class="team-role">AI/ML Engineer</p>
+                    <div class="team-decoration">
+                        <div class="decoration-circle"></div>
+                        <div class="decoration-circle"></div>
+                        <div class="decoration-circle"></div>
+                    </div>
+                </div>
+                <div class="team-content">
+                    <h3>My Contributions</h3>
+                    <ul class="team-skills">
+                        <li><i class="fas fa-check-circle"></i> Developed and trained the text classification model</li>
+                        <li><i class="fas fa-check-circle"></i> Preprocessed and cleaned training datasets</li>
+                        <li><i class="fas fa-check-circle"></i> Optimized model performance and accuracy</li>
+                        <li><i class="fas fa-check-circle"></i> Implemented model deployment pipeline</li>
+                        <li><i class="fas fa-check-circle"></i> Created API endpoints for model inference</li>
+                    </ul>
+                    <div class="tech-used">
+                        <h4>Technologies Used:</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag"><i class="fab fa-python"></i> Python</span>
+                            <span class="tech-tag"><i class="fas fa-project-diagram"></i> TensorFlow</span>
+                            <span class="tech-tag"><i class="fas fa-network-wired"></i> PyTorch</span>
+                            <span class="tech-tag"><i class="fas fa-language"></i> NLP</span>
+                            <span class="tech-tag"><i class="fas fa-robot"></i> Transformers</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="shaigan" class="section team-section">
+        <div class="team-container">
+            <div class="team-card glass-card animate__animated animate__zoomIn">
+                <div class="team-header">
+                    <div class="team-avatar pulse" style="background: linear-gradient(135deg, #6e45e2 0%, #88d3ce 100%);">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h2>Shaigan</h2>
+                    <p class="team-role">Backend Developer</p>
+                    <div class="team-decoration">
+                        <div class="decoration-circle"></div>
+                        <div class="decoration-circle"></div>
+                        <div class="decoration-circle"></div>
+                    </div>
+                </div>
+                <div class="team-content">
+                    <h3>My Contributions</h3>
+                    <ul class="team-skills">
+                        <li><i class="fas fa-check-circle"></i> Designed and implemented the server architecture</li>
+                        <li><i class="fas fa-check-circle"></i> Created RESTful API endpoints</li>
+                        <li><i class="fas fa-check-circle"></i> Set up database and storage solutions</li>
+                        <li><i class="fas fa-check-circle"></i> Implemented authentication and security</li>
+                        <li><i class="fas fa-check-circle"></i> Optimized server performance and scaling</li>
+                    </ul>
+                    <div class="tech-used">
+                        <h4>Technologies Used:</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag"><i class="fab fa-node-js"></i> Node.js</span>
+                            <span class="tech-tag"><i class="fas fa-code"></i> Express</span>
+                            <span class="tech-tag"><i class="fas fa-database"></i> MongoDB</span>
+                            <span class="tech-tag"><i class="fas fa-fire"></i> Firebase</span>
+                            <span class="tech-tag"><i class="fab fa-aws"></i> AWS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
