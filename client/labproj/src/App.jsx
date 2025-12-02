@@ -6,7 +6,10 @@ import {
   faUserMd,
   faSearch,
   faChartLine,
-  faMicroscope
+  faMicroscope,
+  faCheckCircle,
+  faExclamationTriangle,
+  faSpinner
 } from '@fortawesome/free-solid-svg-icons';
 
 const App = () => {
@@ -26,6 +29,8 @@ const App = () => {
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [response, setResponse] = useState(null);
+  const [healthStatus, setHealthStatus] = useState(null);
+  const [isCheckingHealth, setIsCheckingHealth] = useState(false);
 
   const symptoms = [
     'Fever', 'Cough', 'Fatigue', 'Headache',
@@ -86,6 +91,26 @@ const App = () => {
     setErrors((prev) => ({ ...prev, [name]: error }));
   };
 
+  const checkApiHealth = async () => {
+    setIsCheckingHealth(true);
+    try {
+      const res = await fetch('http://localhost:5001/health', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+      });
+      const data = await res.json();
+      setHealthStatus(data);
+    } catch (error) {
+      setHealthStatus({
+        status: 'error',
+        message: 'Failed to connect to API server',
+        error: error.message
+      });
+    } finally {
+      setIsCheckingHealth(false);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -136,6 +161,20 @@ const App = () => {
     </div>
   );
 
+  const getHealthStatusIcon = () => {
+    if (isCheckingHealth) return faSpinner;
+    if (!healthStatus) return faHeartbeat;
+    if (healthStatus.status === 'healthy') return faCheckCircle;
+    return faExclamationTriangle;
+  };
+
+  const getHealthStatusClass = () => {
+    if (isCheckingHealth) return 'health-check-btn checking';
+    if (!healthStatus) return 'health-check-btn';
+    if (healthStatus.status === 'healthy') return 'health-check-btn healthy';
+    return 'health-check-btn unhealthy';
+  };
+
   return (
     <div className="app">
       <div className="container">
@@ -145,9 +184,44 @@ const App = () => {
               <FontAwesomeIcon icon={faHeartbeat} /> AI Disease Detection
             </h1>
             <p className="subtitle">Advanced symptom analysis powered by machine learning</p>
-            <button className="health-check-btn">
-              <FontAwesomeIcon icon={faHeartbeat} /> Check API Health
+            <button 
+              className={getHealthStatusClass()}
+              onClick={checkApiHealth}
+              disabled={isCheckingHealth}
+            >
+              <FontAwesomeIcon 
+                icon={getHealthStatusIcon()} 
+                spin={isCheckingHealth}
+              /> 
+              {isCheckingHealth ? 'Checking...' : 'Check API Health'}
             </button>
+            
+            {healthStatus && (
+              <div className={`health-status ${healthStatus.status}`}>
+                <div className="health-message">
+                  <FontAwesomeIcon 
+                    icon={healthStatus.status === 'healthy' ? faCheckCircle : faExclamationTriangle} 
+                  />
+                  <span>{healthStatus.message}</span>
+                </div>
+                {healthStatus.models && (
+                  <div className="model-status">
+                    <p><strong>Models Status:</strong></p>
+                    <ul>
+                      <li>Diagnosis Model: {healthStatus.models.diagnosis_model ? '✅' : '❌'}</li>
+                      <li>Severity Model: {healthStatus.models.severity_model ? '✅' : '❌'}</li>
+                      <li>Gender Encoder: {healthStatus.models.gender_encoder ? '✅' : '❌'}</li>
+                      <li>Symptom Encoders: {healthStatus.models.symptom_encoders ? '✅' : '❌'}</li>
+                    </ul>
+                  </div>
+                )}
+                {healthStatus.timestamp && (
+                  <div className="health-timestamp">
+                    Last checked: {new Date(healthStatus.timestamp).toLocaleString()}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </header>
 
